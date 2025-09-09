@@ -1,4 +1,6 @@
-import { AuroraText } from "@/components/magicui/aurora-text";
+import UserCard from "@/components/FetchElements/UserCard";
+import { UserDetailResultsType } from "@/lib/types";
+import ky from "ky";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -6,13 +8,26 @@ export const metadata: Metadata = {
 	description: "Home page of Nextjs Starter Template",
 };
 
-const page = () => {
+const page = async () => {
+	const { results } = await ky
+		.get("https://randomuser.me/api/?results=1", {
+			searchParams: {
+				noinfo: "false",
+				inc: "name,location,dob,phone,email,picture",
+			},
+		})
+		.json<UserDetailResultsType>();
 	return (
 		<>
-			<section className="grid h-[80dvh] place-items-center">
-				<AuroraText className="text-5xl font-bold">
-					Nextjs Starter Template
-				</AuroraText>
+			<section className="flex h-[80dvh] items-center justify-center">
+				{results.map((result) => {
+					return (
+						<UserCard
+							key={result.phone}
+							info={result}
+						/>
+					);
+				})}
 			</section>
 		</>
 	);
