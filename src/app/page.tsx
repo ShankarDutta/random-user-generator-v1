@@ -15,7 +15,7 @@ const page = async () => {
 			{
 				searchParams: {
 					noinfo: "false",
-					inc: "name,location,phone,email,picture",
+					inc: "name,location,phone,email,picture,dob,gender",
 				},
 			},
 		)

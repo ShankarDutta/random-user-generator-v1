@@ -33,7 +33,10 @@ const UserCard = ({ info }: CardPropsType) => {
 			{/* Details */}
 			<CardContent className="grid grid-cols-[auto_1fr] items-start gap-x-4 gap-y-3 text-lg">
 				<IoCalendarNumberSharp className="mt-0.5 text-2xl" />
-				<div className="font-medium">{info.dob.age} years</div>
+				<div className="font-medium capitalize">{info.gender}</div>
+
+				<IoCalendarNumberSharp className="mt-0.5 text-2xl" />
+				<div className="font-medium">{info.dob.age}years</div>
 
 				<FaPhone className="mt-0.5 text-2xl" />
 				<div className="font-medium">{info.phone}</div>
@@ -42,7 +45,9 @@ const UserCard = ({ info }: CardPropsType) => {
 				<div className="truncate font-medium">{info.email}</div>
 
 				<FaLocationDot className="mt-0.5 text-2xl" />
-				<div className="font-medium">{info.location.city}</div>
+				<div className="font-medium capitalize">
+					{info.location.city}
+				</div>
 			</CardContent>
 		</Card>
 	);
