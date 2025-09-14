@@ -10,12 +10,15 @@ export const metadata: Metadata = {
 
 const page = async () => {
 	const { results } = await ky
-		.get("https://randomuser.me/api/?results=1", {
-			searchParams: {
-				noinfo: "false",
-				inc: "name,location,dob,phone,email,picture",
+		.get(
+			"https://randomuser.me/api/?inc=gender,dob,name,location,email,phone,picture",
+			{
+				searchParams: {
+					noinfo: "false",
+					inc: "name,location,phone,email,picture",
+				},
 			},
-		})
+		)
 		.json<UserDetailResultsType>();
 	return (
 		<>
@@ -23,7 +26,7 @@ const page = async () => {
 				{results.map((result) => {
 					return (
 						<UserCard
-							key={result.phone}
+							key={result.email}
 							info={result}
 						/>
 					);
