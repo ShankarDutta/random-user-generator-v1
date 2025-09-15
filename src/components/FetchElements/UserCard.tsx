@@ -36,7 +36,7 @@ const UserCard = ({ info }: CardPropsType) => {
 				<div className="font-medium capitalize">{info.gender}</div>
 
 				<IoCalendarNumberSharp className="mt-0.5 text-2xl" />
-				<div className="font-medium">{info.dob.age}years</div>
+				<div className="font-medium">{info.dob.age} years</div>
 
 				<FaPhone className="mt-0.5 text-2xl" />
 				<div className="font-medium">{info.phone}</div>
