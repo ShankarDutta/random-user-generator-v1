@@ -14,7 +14,6 @@ const page = async () => {
 			"https://randomuser.me/api/?inc=gender,dob,name,location,email,phone,picture",
 			{
 				searchParams: {
-					noinfo: "false",
 					inc: "name,location,phone,email,picture,dob,gender",
 				},
 			},
